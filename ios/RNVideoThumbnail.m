@@ -34,6 +34,7 @@ RCT_EXPORT_METHOD(get:(NSString *)filepath resolve:(RCTPromiseResolveBlock)resol
                 NSString *header = @"data:image/png;base64,";
                 NSString *imgdata = [UIImagePNGRepresentation(thumbnail) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
                 NSString *data = [header stringByAppendingString:imgdata];
+                data = [data stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
 
                 [result setObject:data forKey:@"data"];
             }

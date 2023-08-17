@@ -14,6 +14,7 @@ import com.facebook.react.bridge.WritableMap;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
+import java.io.IOException;
 
 public class RNVideoThumbnailModule extends ReactContextBaseJavaModule {
 
@@ -51,7 +52,11 @@ public class RNVideoThumbnailModule extends ReactContextBaseJavaModule {
     } catch (Exception e) {
       promise.reject("E_RNVideoThumbnail_ERROR", e.getMessage());
     } finally {
-      retriever.release();
+      try {
+        retriever.release();
+      } catch (IOException ex) {
+        // no need to worry about this
+      }
     }
   }
 
