@@ -33,19 +33,25 @@ public class RNVideoThumbnailModule extends ReactContextBaseJavaModule {
   public void get(String filePath, Promise promise) {
     filePath = filePath.replace("file://","");
     MediaMetadataRetriever retriever = new MediaMetadataRetriever();
-    retriever.setDataSource(filePath);
-    Bitmap image = retriever.getFrameAtTime();
-    if (image != null) {
-        String encoded = "data:image/png;base64," + convertBitmapToBase64(image);
-        WritableMap map = Arguments.createMap();
+    try {
+      retriever.setDataSource(filePath);
+      Bitmap image = retriever.getFrameAtTime();
+      if (image != null) {
+          String encoded = "data:image/png;base64," + convertBitmapToBase64(image);
+          WritableMap map = Arguments.createMap();
 
-        map.putString("data", encoded);
-        map.putDouble("width", image.getWidth());
-        map.putDouble("height", image.getHeight());
+          map.putString("data", encoded);
+          map.putDouble("width", image.getWidth());
+          map.putDouble("height", image.getHeight());
 
-        promise.resolve(map);
-    } else {
-      promise.reject("E_RNVideoThumbnail_ERROR", "could not get thumbnail");
+          promise.resolve(map);
+      } else {
+        promise.reject("E_RNVideoThumbnail_ERROR", "could not get thumbnail");
+      }
+    } catch (Exception e) {
+      promise.reject("E_RNVideoThumbnail_ERROR", e.getMessage());
+    } finally {
+      retriever.release();
     }
   }
 
