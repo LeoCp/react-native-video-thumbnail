@@ -142,6 +142,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -186,6 +187,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -207,13 +209,17 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"${SRCROOT}/../../../ios/Pods/Headers/**",
 					"$(SRCROOT)/../node_modules/react-native/React",
-					"$(SRCROOT)/../../../ios/Pods/Headers/Public",
+					"/**",
+					"$(SRCROOT)/../../node_modules/react-native/React",
+					"/**",
+					"$(SRCROOT)/../../../node_modules/react-native/React",
+					"/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNVideoThumbnail;
 				SKIP_INSTALL = YES;
@@ -226,13 +232,17 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
-					"${SRCROOT}/../../../ios/Pods/Headers/**",
 					"$(SRCROOT)/../node_modules/react-native/React",
-					"$(SRCROOT)/../../../ios/Pods/Headers/Public",
+					"/**",
+					"$(SRCROOT)/../../node_modules/react-native/React",
+					"/**",
+					"$(SRCROOT)/../../../node_modules/react-native/React",
+					"/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNVideoThumbnail;
 				SKIP_INSTALL = YES;
