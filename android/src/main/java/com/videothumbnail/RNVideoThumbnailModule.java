@@ -36,7 +36,7 @@ public class RNVideoThumbnailModule extends ReactContextBaseJavaModule {
     MediaMetadataRetriever retriever = new MediaMetadataRetriever();
     try {
       retriever.setDataSource(filePath);
-      Bitmap image = retriever.getFrameAtTime();
+      Bitmap image = retriever.getFrameAtTime(1000*1000, MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
       if (image != null) {
           String encoded = "data:image/png;base64," + convertBitmapToBase64(image);
           WritableMap map = Arguments.createMap();
